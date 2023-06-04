@@ -17,7 +17,6 @@ class BlackWhiteImage(models.Model):
         ordering = ["-id"]
 
     def save(self, *args, **kwargs):
-        print('in models')
         if self.output_image is None:
             output_image = convert_image.convert_image(self.bw_img)
             buffer = BytesIO()

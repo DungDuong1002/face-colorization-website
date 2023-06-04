@@ -66,7 +66,7 @@ def upload_image(request):
         output_image_urls.append(image.output_image.url)
     
     image_pairs = zip(input_image_urls, output_image_urls)
-    return render(request, 'image/upload.html', {'form': form, 'image_pairs': image_pairs})
+    return render(request, 'image/upload.html', {'form': form, 'images_count': images_count, 'image_pairs': image_pairs})
 
 # display result
 def display_image(request):

@@ -1,0 +1,35 @@
+{% extends "image/base.html" %}
+
+{% block title %}Colorize face{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <center><input type="file" name="input_image"></center>
+    <br/>
+    <center><input type="submit" value="Upload Image"/></center>
+</form>
+<br/>
+{% if input_image_url %}
+<center><p><strong>Successful upload!</strong></p></center>
+{% endif %}
+
+{% if output_image_url %}
+<div style="display: flex; flex-direction: row; justify-content: space-around; margin-top: 50px;">
+    <div style="width: 500px; height: 1500px; overflow: hidden;">
+        <center><h2>Origin</h2></center>
+        <center><img src="{{ input_image_url }}" alt="Input Image" width="300px" height="auto"></center>
+    </div>
+    <div style="width: 500px; height: 1500px; overflow: hidden;">
+        <center><h2>Result</h2></center>
+        <center><img src="{{ output_image_url }}" alt="Output Image" width="300px" height="auto"></center>
+        <div>
+            <a href="{{ output_image_url }}" download>
+                <br/>
+                <center><input type="submit" value="Download Result" /></center>
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

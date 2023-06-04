@@ -1,0 +1,32 @@
+{% extends "image/base.html" %}
+
+{% block title %}Upload Image to colorize{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Upload</button>
+</form>
+<center><h1>Recent Images</h1></center>
+
+{% for input_image_url, output_image_url in image_pairs %}
+<div style="display: flex; flex-direction: row; justify-content: space-around; margin-top: 50px;">
+    <div style="width: 500px; height: 1000px; overflow: hidden;">
+        <center><h2>Origin</h2></center>
+        <center><img src="{{ input_image_url }}" alt="Input Image" width="300px" height="auto"></center>
+    </div>
+    <div style="width: 500px; height: 1000px; overflow: hidden;">
+        <center><h2>Result</h2></center>
+        <center><img src="{{ output_image_url }}" alt="Output Image" width="300px" height="auto"></center>
+        <div>
+            <a href="{{ output_image_url }}" download>
+                <br/>
+                <center><input type="submit" value="Download Result" /></center>
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

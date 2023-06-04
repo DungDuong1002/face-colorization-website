@@ -12,7 +12,6 @@
         <form action="." method="POST">
             {% csrf_token %}
             {{form.as_p}}
-            <input type="hidden" name="next" value="/colorize"/>
             <input type="submit" value="Sign in" />
         </form>
     </center>

@@ -9,7 +9,9 @@
     <button type="submit">Upload</button>
 </form>
 <center><h1>Recent Images</h1></center>
-
+{% if images_count < 1 %}
+<center><h3>You haven't converted any images yet</h3></center>
+{% else %}
 {% for input_image_url, output_image_url in image_pairs %}
 <div style="display: flex; flex-direction: row; justify-content: space-around; margin-top: 50px;">
     <div style="width: 500px; height: 1000px; overflow: hidden;">
@@ -28,5 +30,5 @@
     </div>
 </div>
 {% endfor %}
-
+{% endif %}
 {% endblock %}
